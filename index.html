@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="description" content="Manual interno de ativação e configuração do serviço Smart POS da Infobrasil.">
+  <title>Manual Smart POS | Infobrasil</title>
+  <!-- Este arquivo não é uma barreira de segurança. Proteja a documentação com autenticação no servidor ou na plataforma de hospedagem. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="assets/js/manual.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <div class="reading-progress" aria-hidden="true"><span id="reading-progress-bar"></span></div>
+
+  <header class="hero" id="topo">
+    <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Abrir menu de navegação" aria-controls="sidebar" aria-expanded="false"><span></span><span></span><span></span></button>
+    <div class="hero__inner">
+      <div class="brand-mark" aria-label="Infobrasil"><span>info</span><strong>brasil</strong></div>
+      <div class="hero__content">
+        <span class="eyebrow">Documentação interna</span>
+        <h1>Manual Interno de Procedimentos</h1>
+        <p class="hero__subtitle">Ativação e Configuração do Serviço Smart POS</p>
+        <p class="hero__note">Uso exclusivo dos colaboradores da Infobrasil Sistemas de Gestão</p>
+      </div>
+      <dl class="document-meta">
+        <div><dt>Versão</dt><dd>2.0</dd></div>
+        <div><dt>Atualizado em</dt><dd>05/08/2026</dd></div>
+      </dl>
+    </div>
+  </header>
+
+  <div class="page-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Navegação do manual">
+      <div class="sidebar__header"><span class="sidebar__dot"></span><div><strong>Manual Smart POS</strong><small>Infobrasil</small></div></div>
+      <div class="search">
+        <label for="manual-search" class="sr-only">Pesquisar no manual</label>
+        <span aria-hidden="true">⌕</span>
+        <input id="manual-search" type="search" placeholder="Pesquisar no manual…" autocomplete="off">
+        <button id="clear-search" type="button" aria-label="Limpar pesquisa" title="Limpar pesquisa">×</button>
+      </div>
+      <p class="search-status" id="search-status" role="status" aria-live="polite"></p>
+      <nav class="toc" aria-label="Sumário">
+        <ol>
+          <li><a href="#objetivo">1. Objetivo</a></li>
+          <li><a href="#visao-geral">2. Visão Geral</a></li>
+          <li><a href="#etapa1">3. Identificação</a></li>
+          <li><a href="#etapa2">4. Instalação e Ativação</a></li>
+          <li><a href="#etapa3">5. Configuração no Sistema</a>
+            <ol>
+              <li><a href="#retaguarda">5.1 Retaguarda</a></li><li><a href="#infopdv">5.2 InfoPDV</a></li><li><a href="#token">5.3 Token</a></li><li><a href="#fuso">5.4 Fuso horário</a></li>
+            </ol>
+          </li>
+          <li><a href="#standby">6. Cupons em Standby</a></li>
+          <li><a href="#funcoes-administrativas">7. Funções Administrativas</a></li>
+          <li><a href="#validacao">8. Validação Final</a></li>
+          <li><a href="#problemas">9. Solução de Problemas</a></li>
+          <li><a href="#resumo">10. Resumo do Fluxo</a></li>
+          <li><a href="#video">11. Vídeo</a></li>
+        </ol>
+      </nav>
+      <div class="sidebar__progress"><span>Progresso de leitura</span><strong id="progress-label">0%</strong></div>
+      <a class="sidebar__top" href="#topo">↑ Voltar ao topo</a>
+    </aside>
+    <button class="sidebar-overlay" id="sidebar-overlay" type="button" aria-label="Fechar menu"></button>
+
+    <main id="conteudo" tabindex="-1">
+      <section id="objetivo" class="content-section intro-section">
+        <span class="section-kicker">Introdução</span><h2>1. Objetivo</h2>
+        <p class="lead">Este manual estabelece o passo a passo padrão para os colaboradores da Infobrasil realizarem a ativação do serviço Smart POS junto aos clientes, cobrindo desde as informações que devem ser coletadas do cliente até a configuração final do sistema Retaguarda e InfoPDV.</p>
+      </section>
+
+      <section id="visao-geral" class="content-section">
+        <span class="section-kicker">Fluxo do atendimento</span><h2>2. Visão Geral do Processo</h2>
+        <p>O processo de ativação do Smart POS segue três grandes etapas, que devem ser seguidas nesta ordem:</p>
+        <ol class="process-grid">
+          <li><span class="process-number">01</span><span class="badge badge--required">Obrigatório</span><h3>Identificação</h3><p>Identificar a máquina do cliente e verificar a disponibilidade do aplicativo SuperTef.</p></li>
+          <li><span class="process-number">02</span><span class="badge badge--conditional">Condicional</span><h3>Instalação e ativação</h3><p>Instalar o aplicativo na máquina e informar a chave de ativação.</p></li>
+          <li><span class="process-number">03</span><span class="badge badge--required">Obrigatório</span><h3>Configuração</h3><p>Cadastrar e configurar a Smart POS no Sistema Retaguarda e no InfoPDV.</p></li>
+        </ol>
+      </section>
+
+      <section id="etapa1" class="content-section">
+        <span class="section-kicker">Etapa 1</span><h2>3. Identificação da Máquina do Cliente</h2>
+        <p>O primeiro passo é perguntar ao cliente qual é o modelo/operadora da máquina que ele deseja utilizar no serviço Smart POS (exemplos: Stone, PagBank, Mercado Pago, entre outras).</p>
+        <p>Algumas máquinas já possuem o aplicativo SuperTef disponível na própria Loja de Aplicativos do equipamento. Nesses casos, basta instalar o app e inserir a chave de ativação (Cenário A).</p>
+        <p>Para máquinas que ainda <strong>não</strong> possuem o app disponível na loja, será necessário solicitar a liberação junto à operadora antes de prosseguir (Cenário B).</p>
+        <div class="alert alert-info"><span class="alert__icon">i</span><div><strong>Decisão inicial</strong><p>Confirme a operadora e consulte a loja de aplicativos antes de iniciar qualquer solicitação de liberação.</p></div></div>
+      </section>
+
+      <section id="etapa2" class="content-section">
+        <span class="section-kicker">Etapa 2</span><h2>4. Instalação e Ativação do Aplicativo</h2>
+        <article class="scenario-card"><div class="scenario-card__header"><span class="badge badge--required">Cenário A</span><h3>Máquina já possui o app SuperTef na loja</h3></div>
+          <h4>Informações obrigatórias do cliente</h4>
+          <p>Antes de iniciar a instalação, colete e registre as seguintes informações:</p>
+          <ul class="check-list"><li><strong>CPF/CNPJ</strong></li><li><strong>Nome Completo/Fantasia</strong></li><li><strong>Contato</strong></li><li><strong>Quantidade de POS</strong></li></ul>
+          <p>Siga os passos abaixo diretamente na máquina do cliente:</p>
+          <ol class="procedure"><li>Na tela inicial da máquina, acesse <em>“Loja de apps”</em>.</li><li>Localize e selecione o aplicativo <em>“SuperTef Fácil”</em>.</li><li>Toque em <em>“Instalar”</em> e aguarde a conclusão do download.</li><li>Abra o aplicativo. Na tela <em>“Tudo pronto para começar sua integração!”</em>, toque em <em>“Começar agora”</em>.</li><li>Na tela de Ativação, informe a <strong>chave de ativação</strong> fornecida pela Infobrasil e toque em <em>“Ativar”</em>.</li></ol>
+          <div class="gallery"><figure><button class="image-button" type="button"><img src="assets/images/embedded-02.jpg" width="500" height="888" loading="lazy" decoding="async" alt="Tela inicial da máquina com acesso à loja de aplicativos"></button><figcaption>Tela inicial — Loja de apps</figcaption></figure><figure><button class="image-button" type="button"><img src="assets/images/embedded-03.jpg" width="500" height="888" loading="lazy" decoding="async" alt="Página do SuperTef Fácil com opção de instalar"></button><figcaption>SuperTef Fácil — Instalar</figcaption></figure><figure><button class="image-button" type="button"><img src="assets/images/embedded-04.jpg" width="500" height="888" loading="lazy" decoding="async" alt="Tela de boas-vindas do SuperTef Fácil"></button><figcaption>Tela de boas-vindas</figcaption></figure><figure><button class="image-button" type="button"><img src="assets/images/embedded-05.jpg" width="500" height="888" loading="lazy" decoding="async" alt="Tela para informar a chave de ativação"></button><figcaption>Tela de Ativação</figcaption></figure></div>
+        </article>
+        <article class="scenario-card"><div class="scenario-card__header"><span class="badge badge--conditional">Cenário B</span><h3>Máquina não possui o app na loja</h3></div>
+          <h4>Informações obrigatórias do cliente</h4>
+          <p>Antes de solicitar a liberação, colete e registre as seguintes informações:</p>
+          <ul class="check-list"><li><strong>CPF/CNPJ</strong></li><li><strong>Nome Completo/Fantasia</strong></li><li><strong>Contato</strong></li><li><strong>Quantidade de POS</strong></li></ul>
+          <p>Em seguida, solicite a liberação do aplicativo diretamente com a operadora da máquina. Para preencher o formulário da operadora, tenha também:</p>
+          <ul class="check-list"><li>Nome (razão social do estabelecimento)</li><li>E-mail</li><li>WhatsApp</li><li>Serial Number (SN) do(s) terminal(is)</li></ul>
+          <p>O Serial Number pode ser encontrado na etiqueta atrás da máquina ou através do app <em>“Informações de sistema”</em> do próprio equipamento.</p>
+          <div class="gallery gallery--wide"><figure><button class="image-button" type="button"><img src="assets/images/embedded-06.jpg" width="893" height="568" loading="lazy" decoding="async" alt="Formulário de solicitação da operadora PagBank"></button><figcaption>Formulário de solicitação — exemplo PagBank</figcaption></figure><figure><button class="image-button" type="button"><img src="assets/images/embedded-07.jpg" width="873" height="443" loading="lazy" decoding="async" alt="Campo para inserção do Serial Number do terminal"></button><figcaption>Inserção do Serial Number (SN)</figcaption></figure></div>
+          <div class="alert alert-deadline"><span class="alert__icon">◷</span><div><strong>Prazos de vinculação por operadora</strong><ul><li>PagBank: 24 horas úteis</li><li>Mercado Pago: 1 a 3 dias úteis</li><li>Demais operadoras: consultar prazo específico junto ao suporte</li></ul></div></div>
+          <p>Após o prazo de vinculação, chegará um e-mail de confirmação no endereço informado. A partir desse momento, o app estará disponível para instalação — siga o procedimento do Cenário A.</p>
+        </article>
+        <h3>Após a ativação — coleta do número da POS</h3>
+        <p>Uma vez ativado, o aplicativo abrirá a tela inicial do Smart POS Infobrasil, contendo o nome do estabelecimento, CNPJ e as opções Receber, Listar, Contato e Configuração.</p>
+        <div class="alert alert-important"><span class="alert__icon">!</span><div><strong>Anote o número da POS</strong><p>É de suma importância anotar o número exibido no rodapé da tela (ex.: Pos: 2992), pois ele será utilizado na configuração do sistema.</p></div></div>
+        <div class="gallery gallery--phone"><figure><button class="image-button" type="button"><img src="assets/images/embedded-08.jpg" width="500" height="888" loading="lazy" decoding="async" alt="Tela inicial do Smart POS ativado com número da POS no rodapé"></button><figcaption>Tela inicial ativada — número da POS no rodapé</figcaption></figure></div>
+      </section>
+
+      <section id="etapa3" class="content-section">
+        <span class="section-kicker">Etapa 3</span><h2>5. Configuração no Sistema</h2>
+        <article id="retaguarda" class="subsection"><h3>5.1. Cadastro no Sistema Retaguarda</h3><p>Com o número da POS em mãos, acesse o Sistema Retaguarda e realize o cadastro do terminal:</p>
+          <ol class="procedure"><li>Acesse o módulo <em>“Fiscos de Saídas”</em>.</li><li>No menu <em>“Módulos”</em>, selecione <em>“Smart POS”</em>.</li><li>Clique em <em>“Adicionar”</em> (Inclusão) e preencha:<ul><li><strong>Código:</strong> número da POS coletado na máquina</li><li><strong>Descrição:</strong> identificação do terminal (ex.: 2992-INFOTEF-1)</li><li><strong>Loja:</strong> selecionar a loja correspondente (ex.: MATRIZ)</li><li><strong>Situação:</strong> A (Ativo)</li></ul></li><li>Clique em <em>“Gravar”</em> para concluir.</li></ol>
+          <div class="gallery gallery--wide"><figure><button class="image-button" type="button"><img src="assets/images/embedded-09.jpg" width="950" height="676" loading="lazy" decoding="async" alt="Tela do Retaguarda no menu Módulos e Smart POS"></button><figcaption>Módulos &gt; Smart POS</figcaption></figure><figure><button class="image-button" type="button"><img src="assets/images/cadastro-terminal-smart-pos.png" width="572" height="385" loading="lazy" decoding="async" alt="Formulário de cadastro de terminal Smart POS"></button><figcaption>Cadastro do terminal</figcaption></figure></div>
+        </article>
+        <article id="infopdv" class="subsection"><h3>5.2. Configuração no InfoPDV</h3><p>Acesse o InfoPDV e digite o comando <span class="command"><kbd>904*</kbd><button type="button" data-copy="904*" aria-label="Copiar comando 904 asterisco">Copiar</button></span> para abrir a tela de <em>“Configuração de TEF”</em>.</p>
+          <div class="table-wrap" tabindex="0" aria-label="Tabela de configuração do InfoPDV"><table><thead><tr><th>Campo</th><th>Valor a configurar</th></tr></thead><tbody><tr><td>Modelo</td><td>16 - SMARTPOS</td></tr><tr><td>SmartPos</td><td>S (Sim)</td></tr><tr><td>Código SmartPos</td><td>Número da POS coletado na máquina</td></tr></tbody></table></div>
+          <p>Após preencher os campos, clique em <em>“Gravar”</em>. O serviço Smart POS estará ativo e pronto para uso.</p>
+          <div class="gallery gallery--wide"><figure><button class="image-button" type="button"><img src="assets/images/embedded-10.jpg" width="533" height="622" loading="lazy" decoding="async" alt="Configuração de TEF no InfoPDV pelo comando 904 asterisco"></button><figcaption>InfoPDV — Configuração de TEF (comando 904*)</figcaption></figure></div>
+        </article>
+        <article id="token" class="subsection"><h3>5.3. Token do Cliente (integração com a Infobrasil)</h3><p>É necessário informar o <strong>Token do Cliente</strong> no cadastro da loja dentro do Sistema Retaguarda. Esse token é repassado pela Infobrasil ao cliente, da mesma forma como é repassada a chave de ativação.</p>
+          <ol class="procedure"><li>Acesse o módulo <em>“Lojas”</em> e localize a loja correspondente.</li><li>Clique em <em>“Alterar”</em> e acesse a aba <em>“Smart POS”</em>.</li><li>No campo <em>“Token Cliente”</em>, informe o token fornecido pela Infobrasil.</li><li>Clique em <em>“Gravar”</em>.</li></ol>
+          <div class="alert alert-warning"><span class="alert__icon">!</span><div><strong>Configuração indispensável</strong><p>Sem o Token do Cliente preenchido no cadastro da loja, a integração do Smart POS não funciona corretamente.</p></div></div>
+          <div class="gallery gallery--wide"><figure><button class="image-button" type="button"><img src="assets/images/embedded-11.jpg" width="908" height="707" loading="lazy" decoding="async" alt="Campo Token Cliente na aba Smart POS do cadastro de Loja"></button><figcaption>Cadastro de Loja &gt; aba Smart POS &gt; campo Token Cliente</figcaption></figure></div>
+        </article>
+        <article id="fuso" class="subsection"><h3>5.4. Configuração do Fuso Horário dos Comprovantes</h3><p>Em alguns modelos, a maquineta pode enviar a hora em um fuso horário diferente do horário local. Um exemplo comum ocorre em maquinetas <strong>Stone</strong>, configuradas com <strong>timezone +3</strong>, fazendo com que o comprovante seja emitido com aproximadamente <strong>3 horas de diferença</strong>.</p>
+          <div class="gallery gallery--wide"><figure><button class="image-button" type="button"><img src="assets/images/embedded-12.jpg" width="574" height="387" loading="lazy" decoding="async" alt="Configuração de Hora em UTC e diferença de fuso horário no cadastro Smart POS"></button><figcaption>Configuração de fuso horário do terminal</figcaption></figure></div>
+          <ol class="procedure"><li>Acesse <strong>Sistema Retaguarda → Smart POS</strong>.</li><li>Selecione o cadastro da maquineta e clique em <strong>Alterar</strong>.</li><li>No campo <strong>Hora em UTC</strong>, selecione <strong>Sim</strong> quando a maquineta estiver enviando o horário incorreto.</li><li>Selecione a <strong>Diferença de Fuso Horário</strong> correspondente.</li><li>Se a maquineta já imprimir o horário corretamente, mantenha <strong>Não</strong>.</li><li>Clique em <strong>Gravar</strong>.</li></ol>
+          <div class="alert alert-warning"><span class="alert__icon">!</span><div><strong>Use somente quando necessário</strong><p>Caso a Smart POS já realize a conversão corretamente, mantenha <strong>Hora em UTC = Não</strong>.</p></div></div>
+        </article>
+      </section>
+
+      <section id="standby" class="content-section"><span class="section-kicker">Recurso condicional</span><h2>6. Configuração e Utilização de Cupons em Standby</h2><p>O recurso permite deixar uma venda já iniciada como pendente para conclusão posterior, enquanto o operador realiza novos atendimentos e vendas no PDV.</p>
+        <h3>6.1. Habilitação no Perfil de Usuário</h3><ol class="procedure"><li>Acesse <strong>Sistema Retaguarda → Usuários → Perfis</strong>.</li><li>Localize o perfil <strong>141 — USUÁRIOS - LIVRE PARA ABRIR VÁRIOS CUPONS NO PDV</strong>.</li><li>Clique em <strong>Alterar</strong>.</li><li>No campo <strong>Perfil</strong>, informe <strong>S — Sim</strong>.</li><li>Clique em <strong>Gravar</strong>.</li></ol>
+        <div class="alert alert-info"><span class="alert__icon">i</span><div><strong>Observação</strong><p>Ao habilitar esse perfil, qualquer venda poderá ficar pendente para que outra seja iniciada, independentemente de o financeiro ter sido preenchido com uma forma de pagamento Smart POS ou não.</p></div></div>
+        <div class="gallery gallery--wide"><figure><button class="image-button" type="button"><img src="assets/images/embedded-13.png" width="738" height="647" loading="lazy" decoding="async" alt="Perfil 141 configurado como Sim no Sistema Retaguarda"></button><figcaption>Sistema Retaguarda — Perfil 141 habilitado como Sim</figcaption></figure></div>
+        <h3>6.2. Colocando uma Venda em Standby no PDV</h3><ol class="procedure"><li>Inicie o cupom normalmente e informe os produtos.</li><li>Selecione a forma de pagamento configurada para a <strong>Smart POS</strong>.</li><li>Envie o pagamento para a maquineta.</li><li>Enquanto o pagamento estiver pendente, pressione <span class="command"><kbd>ESC</kbd><button type="button" data-copy="ESC" aria-label="Copiar comando ESC">Copiar</button></span> no PDV.</li><li>Na confirmação, escolha <strong>Sim</strong> para deixar a venda em standby.</li></ol>
+        <div class="gallery gallery--wide"><figure><button class="image-button" type="button"><img src="assets/images/embedded-14.png" width="1389" height="605" loading="lazy" decoding="async" alt="Mensagem de confirmação para deixar venda Smart POS em standby"></button><figcaption>InfoPDV — Confirmação para deixar a venda em standby</figcaption></figure></div>
+        <div class="alert alert-warning"><span class="alert__icon">!</span><div><strong>Antes de encerrar o caixa</strong><p>Confirme se não existem vendas em standby aguardando finalização.</p></div></div>
+      </section>
+
+      <section id="funcoes-administrativas" class="content-section"><span class="section-kicker">Operações críticas</span><h2>7. Funções Administrativas da Smart POS</h2><p>O InfoPDV disponibiliza funções para executar operações relacionadas ao pagamento ou ao estorno diretamente pelo caixa.</p>
+        <div class="alert alert-danger"><span class="alert__icon">!</span><div><strong>Pré-requisito</strong><p>O cupom deve estar <strong>aberto no PDV</strong> para que uma das funções administrativas seja aplicada.</p></div></div>
+        <h3>7.1. Acessando o Menu</h3><ol class="procedure"><li>Abra ou mantenha aberto o cupom relacionado à operação.</li><li>Localize o comando <strong>69* — SmartPOS → Funções Administrativas InfoSmartPos</strong>.</li><li>Digite <span class="command"><kbd>69*</kbd><button type="button" data-copy="69*" aria-label="Copiar comando 69 asterisco">Copiar</button></span> e confirme.</li></ol>
+        <div class="gallery gallery--wide"><figure><button class="image-button" type="button"><img src="assets/images/embedded-15.jpg" width="742" height="697" loading="lazy" decoding="async" alt="Tela de atalhos do InfoPDV destacando o comando 69 para funções administrativas Smart POS"></button><figcaption>InfoPDV — Comando 69* para acessar as Funções Administrativas</figcaption></figure></div>
+        <h3>7.2. Funções Disponíveis</h3><ol class="procedure"><li><strong>Estornar pagamento:</strong> realiza o estorno associado ao cupom aberto.</li><li><strong>Reimprimir pagamento:</strong> reimprime o comprovante do pagamento.</li><li><strong>Reimprimir estorno:</strong> reimprime o comprovante de uma operação de estorno.</li></ol><p>Selecione a função desejada e clique em <strong>Confirmar</strong>.</p>
+        <div class="gallery gallery--wide"><figure><button class="image-button" type="button"><img src="assets/images/embedded-16.jpg" width="524" height="318" loading="lazy" decoding="async" alt="Janela de funções administrativas Smart POS com opções de estorno e reimpressão"></button><figcaption>InfoSmartPos — Opções de estorno e reimpressão</figcaption></figure></div>
+        <div class="alert alert-danger"><span class="alert__icon">!</span><div><strong>Confirme o cupom</strong><p>Antes de prosseguir, verifique se o cupom aberto corresponde ao pagamento que será estornado ou reimpresso.</p></div></div>
+      </section>
+
+      <section id="validacao" class="content-section placeholder-section"><span class="section-kicker">Conferência</span><h2>8. Validação Final</h2><div class="alert alert-success"><span class="alert__icon">✓</span><div><strong>Estrutura preparada</strong><p>O manual original não contém um procedimento específico de validação final. Esta seção está reservada para futura inclusão, sem inventar etapas técnicas.</p></div></div><!-- Adicionar aqui somente um procedimento de validação aprovado pela equipe responsável. --></section>
+      <section id="problemas" class="content-section placeholder-section"><span class="section-kicker">Suporte</span><h2>9. Solução de Problemas</h2><div class="alert alert-info"><span class="alert__icon">i</span><div><strong>Estrutura preparada</strong><p>O manual original não contém uma matriz de solução de problemas. Esta seção está reservada para conteúdo técnico homologado.</p></div></div><!-- Adicionar aqui somente soluções de problemas homologadas pela equipe responsável. --></section>
+
+      <section id="resumo" class="content-section"><span class="section-kicker">Checklist operacional</span><h2>10. Resumo do Fluxo Completo</h2><div class="table-wrap" tabindex="0" aria-label="Resumo do fluxo completo"><table><thead><tr><th>Etapa</th><th>Ação</th></tr></thead><tbody>
+        <tr><td><span class="table-step">1</span></td><td>Perguntar ao cliente qual máquina será utilizada</td></tr><tr><td><span class="table-step">2</span></td><td>Verificar se o app SuperTef está disponível na loja</td></tr><tr><td><span class="table-step">3</span></td><td>Se disponível: instalar e ativar com a chave da Infobrasil</td></tr><tr><td><span class="table-step">4</span></td><td>Se indisponível: solicitar liberação (nome, e-mail, WhatsApp, SN) e aguardar o prazo</td></tr><tr><td><span class="table-step">5</span></td><td>Após liberação: instalar e ativar normalmente</td></tr><tr><td><span class="table-step">6</span></td><td>Anotar o número da POS exibido na tela inicial</td></tr><tr><td><span class="table-step">7</span></td><td>Cadastrar a POS no Retaguarda (Fiscos de Saídas &gt; Módulos &gt; Smart POS)</td></tr><tr><td><span class="table-step">8</span></td><td>Configurar o TEF no InfoPDV via comando 904* (Modelo 16-SMARTPOS, SmartPos = S, Código da POS)</td></tr><tr><td><span class="table-step">9</span></td><td>Habilitar o perfil 141 como Sim para permitir vários cupons abertos</td></tr><tr><td><span class="table-step">10</span></td><td>Durante pagamento pendente, pressionar ESC e confirmar Sim para standby</td></tr><tr><td><span class="table-step">11</span></td><td>Com o cupom aberto, utilizar 69* para acessar as funções administrativas</td></tr><tr><td><span class="table-step">12</span></td><td>Gravar e concluir — serviço ativo</td></tr>
+      </tbody></table></div></section>
+
+      <section id="video" class="content-section"><span class="section-kicker">Demonstração</span><h2>11. Vídeo de Demonstração</h2><p>Assista ao vídeo para acompanhar todo o processo de configuração passo a passo.</p><div class="video-card"><div class="video-card__header"><span aria-hidden="true">▶</span><div><strong>Configuração Smart POS</strong><small>Material interno de apoio</small></div></div><video controls preload="metadata" playsinline aria-label="Vídeo de demonstração da configuração Smart POS"><source src="assets/video/demonstracao-smart-pos.mp4" type="video/mp4"><track kind="captions" srclang="pt-BR" label="Português" default>Seu navegador não suporta vídeos HTML5.</video><details><summary>Transcrição do vídeo</summary><p>A transcrição poderá ser adicionada quando estiver disponível.</p></details></div></section>
+    </main>
+  </div>
+
+  <footer><div class="brand-mark brand-mark--footer"><span>info</span><strong>brasil</strong></div><p>Sistemas de Gestão · Documento interno de uso exclusivo dos colaboradores.</p></footer>
+  <button id="back-to-top" class="back-to-top" type="button" aria-label="Voltar ao topo">↑<span>Topo</span></button>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visualização ampliada da imagem" aria-hidden="true"><button class="lightbox__close" type="button" aria-label="Fechar imagem ampliada">×</button><button class="lightbox__nav lightbox__prev" type="button" aria-label="Imagem anterior">‹</button><figure><img id="lightbox-image" src="assets/images/embedded-02.jpg" alt=""><figcaption id="lightbox-caption"></figcaption></figure><button class="lightbox__nav lightbox__next" type="button" aria-label="Próxima imagem">›</button></div>
+</body>
+</html>
