@@ -6,11 +6,13 @@
   <meta name="robots" content="noindex, nofollow, noarchive">
   <meta name="description" content="Manual interno de ativação e configuração do serviço Smart POS da Infobrasil.">
   <title>Manual Smart POS | Infobrasil</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/smart-pos-icon.svg">
+  <meta name="theme-color" content="#0e3b22">
   <!-- Este arquivo não é uma barreira de segurança. Proteja a documentação com autenticação no servidor ou na plataforma de hospedagem. -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/styles.css?v=nfe-12">
   <script src="assets/js/manual.js" defer></script>
 </head>
 <body>
@@ -28,8 +30,8 @@
         <p class="hero__note">Uso exclusivo dos colaboradores da Infobrasil Sistemas de Gestão</p>
       </div>
       <dl class="document-meta">
-        <div><dt>Versão</dt><dd>2.0</dd></div>
-        <div><dt>Atualizado em</dt><dd>05/08/2026</dd></div>
+        <div><dt>Versão</dt><dd>3.0</dd></div>
+        <div><dt>Atualizado em</dt><dd>27/10/2026</dd></div>
       </dl>
     </div>
   </header>
@@ -61,6 +63,7 @@
           <li><a href="#problemas">9. Solução de Problemas</a></li>
           <li><a href="#resumo">10. Resumo do Fluxo</a></li>
           <li><a href="#video">11. Vídeo</a></li>
+          <li><a href="#nfe-smartpos">12. Smart POS na NF-e</a></li>
         </ol>
       </nav>
       <div class="sidebar__progress"><span>Progresso de leitura</span><strong id="progress-label">0%</strong></div>
@@ -168,6 +171,52 @@
       </tbody></table></div></section>
 
       <section id="video" class="content-section"><span class="section-kicker">Demonstração</span><h2>11. Vídeo de Demonstração</h2><p>Assista ao vídeo para acompanhar todo o processo de configuração passo a passo.</p><div class="video-card"><div class="video-card__header"><span aria-hidden="true">▶</span><div><strong>Configuração Smart POS</strong><small>Material interno de apoio</small></div></div><video controls preload="metadata" playsinline aria-label="Vídeo de demonstração da configuração Smart POS"><source src="assets/video/demonstracao-smart-pos.mp4" type="video/mp4"><track kind="captions" srclang="pt-BR" label="Português" default>Seu navegador não suporta vídeos HTML5.</video><details><summary>Transcrição do vídeo</summary><p>A transcrição poderá ser adicionada quando estiver disponível.</p></details></div></section>
+
+      <section id="nfe-smartpos" class="content-section">
+        <span class="section-kicker">Notas fiscais eletrônicas</span>
+        <h2>12. Smart POS na NF-e</h2>
+        <p class="lead">Configure o TEF e a impressora no módulo de NF-e antes de enviar pagamentos para a Smart POS. Após a aprovação do pagamento, gere o XML da nota e envie a NF-e à SEFAZ.</p>
+        <div class="alert alert-info"><span class="alert__icon">i</span><div><strong>Antes de começar</strong><p>Confirme que a Smart POS está ativada e cadastrada no Retaguarda conforme as etapas anteriores deste manual. O código da POS e a porta da impressora mostrados nas imagens são exemplos: utilize os dados do cliente.</p></div></div>
+
+        <h3>12.1. Acessar a pré-configuração do TEF</h3>
+        <ol class="procedure">
+          <li>No Sistema Retaguarda, abra o módulo <strong>NF-e (Notas Fiscais)</strong>.</li>
+          <li>Acesse <strong>Operações → TEF → Pré Configuração do TEF</strong>.</li>
+        </ol>
+        <div class="gallery gallery--nfe"><figure><button class="image-button" type="button"><img src="assets/images/nfe-tef-menu.png" width="1015" height="692" loading="lazy" decoding="async" alt="Menu Operações do módulo NF-e com a opção TEF e Pré Configuração do TEF destacada"></button><figcaption>NF-e — Operações &gt; TEF &gt; Pré Configuração do TEF</figcaption></figure></div>
+
+        <h3>12.2. Configurar a Smart POS</h3>
+        <p>Na janela <strong>Configuração de TEF</strong>, preencha os campos conforme o terminal em uso:</p>
+        <ol class="procedure">
+          <li>Selecione <strong>Modelo: 99-SMARTPOS</strong> e <strong>SmartPos: S</strong>.</li>
+          <li>Defina <strong>Client SITEF: N</strong>, <strong>IEF no Recebimento: N</strong> e <strong>Modo de Impressão: IMPRESSORA_E_POS</strong>, conforme o exemplo.</li>
+          <li>Informe em <strong>Código SmartPos</strong> o número da POS cadastrada para o cliente. Na imagem, o código <strong>2633</strong> é apenas ilustrativo.</li>
+          <li>Confira as demais opções e os endereços TEF/SITEF de acordo com a instalação do cliente. Clique em <strong>Gravar</strong>.</li>
+        </ol>
+        <div class="gallery gallery--nfe gallery--nfe-compact"><figure><button class="image-button" type="button"><img src="assets/images/nfe-tef-configuracao.png" width="534" height="620" loading="lazy" decoding="async" alt="Janela de configuração de TEF com Modelo 99-SMARTPOS, SmartPos S, Client SITEF N, modo IMPRESSORA_E_POS e código da Smart POS destacados"></button><figcaption>Pré-configuração do TEF — confira os campos da Smart POS</figcaption></figure></div>
+
+        <h3>12.3. Configurar e testar a Pos Printer</h3>
+        <ol class="procedure">
+          <li>No módulo de NF-e, acesse <strong>Operações → Configuração PosPrinter</strong>.</li>
+          <li>Na janela <strong>Impressoras POS</strong>, selecione o <strong>modelo</strong> compatível e configure a <strong>porta</strong> da impressora usada pelo cliente. A imagem mostra <strong>ppEscPosEpson</strong> e uma porta TCP apenas como exemplo.</li>
+          <li>Revise as opções de impressão, incluindo página de código, colunas e tradução de tags, conforme a impressora instalada. Clique em <strong>Ativar</strong>.</li>
+          <li>Clique em <strong>Imprimir Teste</strong> e confirme que a página sai corretamente na impressora antes de prosseguir.</li>
+        </ol>
+        <div class="gallery gallery--nfe"><figure><button class="image-button" type="button"><img src="assets/images/nfe-posprinter-menu.png" width="1015" height="697" loading="lazy" decoding="async" alt="Menu Operações da NF-e com Configuração PosPrinter destacada"></button><figcaption>NF-e — Operações &gt; Configuração PosPrinter</figcaption></figure></div>
+        <div class="gallery gallery--nfe gallery--nfe-compact"><figure><button class="image-button" type="button"><img src="assets/images/nfe-posprinter-configuracao.png" width="609" height="477" loading="lazy" decoding="async" alt="Janela Impressoras POS com modelo, porta e botão Imprimir Teste destacados"></button><figcaption>Impressoras POS — configure, ative e imprima uma página de teste</figcaption></figure></div>
+        <div class="alert alert-warning"><span class="alert__icon">!</span><div><strong>Teste da impressora</strong><p>Se a página de teste não for impressa corretamente, revise o modelo, a porta e a comunicação com a impressora antes de efetuar o pagamento da NF-e.</p></div></div>
+
+        <h3>12.4. Efetuar o pagamento e enviar a NF-e</h3>
+        <ol class="procedure">
+          <li>Preencha a nota e acesse o <strong>Financeiro</strong> da NF-e. Sobre a forma de pagamento destinada à Smart POS, clique com o <strong>botão direito do mouse</strong> e selecione <strong>Efetuar TEF</strong>.</li>
+          <li>Na confirmação, confira se a POS indicada é a do cliente e selecione <strong>Sim</strong> para encaminhar o pagamento ao terminal.</li>
+          <li>Conclua o pagamento na Smart POS e aguarde a confirmação da transação.</li>
+          <li>Após a aprovação do pagamento, <strong>gere o XML da NF-e e envie a nota à SEFAZ</strong>. Confira o retorno da autorização antes de considerar a emissão concluída.</li>
+        </ol>
+        <div class="gallery gallery--nfe"><figure><button class="image-button" type="button"><img src="assets/images/nfe-efetuar-tef.png" width="1022" height="700" loading="lazy" decoding="async" alt="Financeiro da NF-e com menu de contexto da forma de pagamento e opção Efetuar TEF destacada"></button><figcaption>Financeiro — botão direito na forma de pagamento &gt; Efetuar TEF</figcaption></figure></div>
+        <div class="gallery gallery--nfe"><figure><button class="image-button" type="button"><img src="assets/images/nfe-confirmar-pos.png" width="1015" height="702" loading="lazy" decoding="async" alt="Confirmação para enviar o pagamento à POS selecionada, exibindo o código 2633 como exemplo"></button><figcaption>Confirme a POS de destino antes de enviar o pagamento</figcaption></figure></div>
+        <div class="alert alert-important"><span class="alert__icon">!</span><div><strong>Conclusão da operação</strong><p>A aprovação na Smart POS não substitui a emissão fiscal. Confirme que o XML foi criado, enviado à SEFAZ e que a NF-e recebeu autorização. Se houver rejeição ou falha no envio, trate a pendência antes de finalizar o atendimento.</p></div></div>
+      </section>
     </main>
   </div>
 
