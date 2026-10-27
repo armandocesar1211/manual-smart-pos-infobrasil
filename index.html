@@ -63,7 +63,9 @@
           <li><a href="#problemas">9. Solução de Problemas</a></li>
           <li><a href="#resumo">10. Resumo do Fluxo</a></li>
           <li><a href="#video">11. Vídeo</a></li>
-          <li><a href="#nfe-smartpos">12. Smart POS na NF-e</a></li>
+          <li><a href="#nfe-smartpos">12. Smart POS na NF-e</a>
+            <ol><li><a href="#nfe-funcoes-administrativas">12.5 Funções administrativas</a></li></ol>
+          </li>
         </ol>
       </nav>
       <div class="sidebar__progress"><span>Progresso de leitura</span><strong id="progress-label">0%</strong></div>
@@ -216,6 +218,22 @@
         <div class="gallery gallery--nfe"><figure><button class="image-button" type="button"><img src="assets/images/nfe-efetuar-tef.png" width="1022" height="700" loading="lazy" decoding="async" alt="Financeiro da NF-e com menu de contexto da forma de pagamento e opção Efetuar TEF destacada"></button><figcaption>Financeiro — botão direito na forma de pagamento &gt; Efetuar TEF</figcaption></figure></div>
         <div class="gallery gallery--nfe"><figure><button class="image-button" type="button"><img src="assets/images/nfe-confirmar-pos.png" width="1015" height="702" loading="lazy" decoding="async" alt="Confirmação para enviar o pagamento à POS selecionada, exibindo o código 2633 como exemplo"></button><figcaption>Confirme a POS de destino antes de enviar o pagamento</figcaption></figure></div>
         <div class="alert alert-important"><span class="alert__icon">!</span><div><strong>Conclusão da operação</strong><p>A aprovação na Smart POS não substitui a emissão fiscal. Confirme que o XML foi criado, enviado à SEFAZ e que a NF-e recebeu autorização. Se houver rejeição ou falha no envio, trate a pendência antes de finalizar o atendimento.</p></div></div>
+
+        <h3 id="nfe-funcoes-administrativas">12.5. Funções administrativas da Smart POS na NF-e</h3>
+        <p>Use as funções administrativas no módulo de NF-e para estornar um pagamento ou reimprimir comprovantes da Smart POS.</p>
+        <ol class="procedure">
+          <li>Com o módulo <strong>NF-e (Notas Fiscais)</strong> aberto, acesse <strong>Operações → TEF → Funções AdminSmartPos</strong>.</li>
+          <li>Na janela <strong>Funções Administrativas SmartPOS</strong>, selecione a operação desejada:
+            <ul>
+              <li><strong>Estornar pagamento:</strong> estorna a transação de pagamento.</li>
+              <li><strong>Reimprimir pagamento:</strong> emite novamente o comprovante do pagamento.</li>
+              <li><strong>Reimprimir estorno:</strong> emite novamente o comprovante do estorno.</li>
+            </ul>
+          </li>
+          <li>Clique em <strong>Confirmar</strong> e siga as próximas telas do sistema. Antes de estornar, confira se a operação corresponde ao pagamento correto.</li>
+        </ol>
+        <div class="gallery gallery--nfe"><figure><button class="image-button" type="button"><img src="assets/images/nfe-adminsmartpos-menu.png" width="1018" height="698" loading="lazy" decoding="async" alt="Menu Operações da NF-e com TEF e Funções AdminSmartPos destacados"></button><figcaption>NF-e — Operações &gt; TEF &gt; Funções AdminSmartPos</figcaption></figure></div>
+        <div class="gallery gallery--nfe"><figure><button class="image-button" type="button"><img src="assets/images/nfe-adminsmartpos-funcoes.png" width="1024" height="699" loading="lazy" decoding="async" alt="Janela Funções Administrativas SmartPOS com as opções estornar pagamento, reimprimir pagamento e reimprimir estorno"></button><figcaption>Selecione a função administrativa e clique em Confirmar</figcaption></figure></div>
       </section>
     </main>
   </div>
